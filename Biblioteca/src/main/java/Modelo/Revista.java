@@ -13,15 +13,16 @@ public class Revista extends MaterialBiblioteca implements Prestable {
 		return numero;
 	}
 
-	public Revista(String id, String titulo, String autor, String ISSN, int numero) {
+	public Revista(int id, String titulo, String autor, String ISSN, int numero) {
 		super(id, titulo, autor);
 		this.ISSN = ISSN;
 		this.numero = numero;
 	}
 
 	public void mostrarInformacion() {
-		System.out.println("Revista: " + getTitulo() + " - Autor: " + getAutor() + " - ISSN: " + ISSN);
+		System.out.println("ID:" + getId() + "Revista: " + getTitulo() + " - Autor: " + getAutor() + " - ISSN: " + ISSN + "Número: " + numero);
 	}
+
 
 	@Override
 	public void prestar() {

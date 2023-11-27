@@ -2,12 +2,12 @@ package Modelo;
 
 public class MaterialBiblioteca {
 
-	protected String id;
+	protected int id;
 	protected boolean estado;
 	protected String titulo;
 	protected String autor;
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
@@ -28,7 +28,7 @@ public class MaterialBiblioteca {
 	}
 
 	public void mostrarInformacion(){};
-	public MaterialBiblioteca(String id, String titulo, String autor) {
+	public MaterialBiblioteca(int id, String titulo, String autor) {
 		this.id = id;
 		this.titulo = titulo;
 		this.autor = autor;
