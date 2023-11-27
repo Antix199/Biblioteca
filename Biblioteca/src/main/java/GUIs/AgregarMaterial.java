@@ -11,8 +11,12 @@ public class AgregarMaterial extends JFrame{
     private JTextField id;
     private JTextField edicion;
     private JButton registrar;
+    private JPanel PanelAgregar;
 
     public AgregarMaterial() {
+
+        super("Menu agregar material");
+        setContentPane(PanelAgregar);
         registrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

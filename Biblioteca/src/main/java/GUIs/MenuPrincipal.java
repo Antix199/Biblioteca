@@ -9,8 +9,12 @@ public class MenuPrincipal extends JFrame {
     private JButton menuRP;
     private JButton menuRD;
     private JButton finalizarPrograma;
+    private JPanel PanelMenu;
 
     public MenuPrincipal() {
+
+        super("Menu principal");
+        setContentPane(PanelMenu);
 
         menuAgregar.addActionListener(new ActionListener() {
             @Override

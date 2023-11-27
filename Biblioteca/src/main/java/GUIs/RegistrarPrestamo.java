@@ -10,8 +10,12 @@ public class RegistrarPrestamo extends JFrame {
     private JTextField textField3;
     private JTextField textField4;
     private JButton Prestar;
+    private JPanel PanelPrestamo;
 
     public RegistrarPrestamo() {
+
+        super("Menu préstamo");
+        setContentPane(PanelPrestamo);
         Prestar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
