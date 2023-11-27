@@ -23,10 +23,13 @@ public class BuscarMaterial extends JFrame{
 
         super("Menubuscar material");
         setContentPane(PanelBuscar);
-
+        for (MaterialBiblioteca material : biblioteca.getColeccion()) {
+            resultadosTextArea.append(material.toString() + "\n");
+        }
         buscarTitulo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                resultadosTextArea.setText("");
                 String titulo = BuscarMaterial.this.textoBuscar.getText();
 
                 List<MaterialBiblioteca> resultados = biblioteca.buscarPorTitulo(titulo);
@@ -39,6 +42,8 @@ public class BuscarMaterial extends JFrame{
         buscarAutor.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                resultadosTextArea.setText("");
                 String autor = BuscarMaterial.this.textoBuscar.getText();
 
                 List<MaterialBiblioteca> resultados = biblioteca.buscarPorAutor(autor);
@@ -51,6 +56,7 @@ public class BuscarMaterial extends JFrame{
         buscarCodigo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                resultadosTextArea.setText("");
                 String codigo = BuscarMaterial.this.textoBuscar.getText();
 
                 List<MaterialBiblioteca> resultados = biblioteca.buscarPorCodigo(codigo);
@@ -60,5 +66,6 @@ public class BuscarMaterial extends JFrame{
                 }
             }
         });
+
     }
 }

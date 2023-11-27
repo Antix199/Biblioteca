@@ -7,14 +7,20 @@ import java.util.List;
 public class Biblioteca {
     private List<MaterialBiblioteca> coleccion;
     private List<Usuario> usuarios;
+    private List<Prestamo> prestamos = new ArrayList<>();
 
     public List<MaterialBiblioteca> getColeccion() {
         return coleccion;
     }
 
+    public List<Prestamo> getPrestamos() {
+        return prestamos;
+    }
     public List<Usuario> getUsuarios() {
         return usuarios;
     }
+
+
 
     public Biblioteca() {
         this.coleccion = new ArrayList<>();
@@ -136,19 +142,54 @@ public class Biblioteca {
         MaterialBiblioteca material = buscarPorID(idMaterial);
         Usuario usuario = buscarUsuarioPorID(idUsuario);
 
-        if (material != null && usuario != null) {
-            if (!material.isPrestado() && material instanceof Prestable) {
-                Prestable prestableMaterial = (Prestable) material;
-                prestableMaterial.prestar();
-                usuario.registrarPrestamo(material);
-                JOptionPane.showMessageDialog(null, "Préstamo registrado con éxito.");
+        if (usuario != null) {
+            if (!usuario.getPrestamo()) {
+                if (material != null && material instanceof Prestable) {
+                    Prestable prestableMaterial = (Prestable) material;
+                    if (!material.isPrestado()) {
+                        usuario.registrarPrestamo(material);
+                        prestableMaterial.prestar();
+                        Prestamo nuevoPrestamo = new Prestamo(idUsuario, usuario.getNombre(), usuario.getEmail(), idMaterial, material.getTitulo());
+                        prestamos.add(nuevoPrestamo);
+                        JOptionPane.showMessageDialog(null, "Préstamo registrado con éxito.");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "El material ya está prestado.");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "El material no es prestable.");
+                }
             } else {
-                JOptionPane.showMessageDialog(null, "El material ya está prestado o no es prestable.");
+                JOptionPane.showMessageDialog(null, "Lo sentimos, este usuario ya tiene un préstamo asociado: \n " +"Titulo: " + usuario.getMaterialPrestado().getTitulo() + ", Id:" + usuario.getMaterialPrestado().getId());
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Material o usuario no encontrado.");
+            JOptionPane.showMessageDialog(null, "Usuario no encontrado.");
+        }
+
+    }
+    public Prestamo buscarPrestamo(int idUsuario, int idMaterial) {
+        for (Prestamo prestamo : prestamos) {
+            if (prestamo.getIdUsuario() == idUsuario && prestamo.getIdMaterial() == idMaterial) {
+                return prestamo;
+            }
+        }
+        return null;
+    }
+
+    public void registrarDevolucion(int idUsuario, int idMaterial) {
+        Prestamo prestamo = buscarPrestamo(idUsuario, idMaterial);
+        if (prestamo != null) {
+            Usuario usuario = buscarUsuarioPorID(idUsuario);
+            usuario.registrarDevolucion();
+            Prestable prestableMaterial = (Prestable) buscarPorID(idMaterial);
+            prestableMaterial.devolver();
+            prestamos.remove(prestamo);
+            JOptionPane.showMessageDialog(null, "Devolución registrada con éxito.");
+        } else {
+            JOptionPane.showMessageDialog(null, "No se encontró el préstamo.");
         }
     }
+
+
 }
 
 

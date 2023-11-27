@@ -21,15 +21,16 @@ public class RegistrarPrestamo extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                int idMaterial = Integer.parseInt(RegistrarPrestamo.this.textIDMaterial.getText());
-                int idUsuario = Integer.parseInt(RegistrarPrestamo.this.textIDUsuario.getText());
+                int idMaterial = Integer.parseInt(textIDMaterial.getText());
+                int idUsuario = Integer.parseInt(textIDUsuario.getText());
 
                 if (biblioteca.existeMaterialConID(idMaterial) && biblioteca.existeUsuarioConID(idUsuario)) {
                     biblioteca.registrarPrestamo(idMaterial, idUsuario);
-                    JOptionPane.showMessageDialog(null, "Préstamo registrado con éxito.");
+
                 } else {
                     JOptionPane.showMessageDialog(null, "Material o usuario no encontrado.");
                 }
+                dispose();
             }
 
         });

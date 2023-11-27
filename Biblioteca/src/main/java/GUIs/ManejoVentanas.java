@@ -1,7 +1,9 @@
 package GUIs;
 import Modelo.Biblioteca;
+import Modelo.MaterialBiblioteca;
 
 import javax.swing.*;
+import java.util.List;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
 public class ManejoVentanas {
@@ -24,7 +26,7 @@ public class ManejoVentanas {
 
     public static void abrirVentanaBuscar(Biblioteca biblioteca) {
         BuscarMaterial ventanaBuscar = new BuscarMaterial(biblioteca);
-        ventanaBuscar.setSize(600, 300);
+        ventanaBuscar.setSize(800, 300);
         ventanaBuscar.setLocationRelativeTo(null);
         ventanaBuscar.setVisible(true);
     }
@@ -38,10 +40,11 @@ public class ManejoVentanas {
 
     public static void abrirVentanaDevolucion(Biblioteca biblioteca) {
         RegistrarDevolucion ventanaDevolucion = new RegistrarDevolucion(biblioteca);
-        ventanaDevolucion.setSize(400, 300);
+        ventanaDevolucion.setSize(600, 300);
         ventanaDevolucion.setLocationRelativeTo(null);
         ventanaDevolucion.setVisible(true);
     }
+
     public static void abrirVentanaUsuario(Biblioteca biblioteca) {
         NuevoUsuario ventanaUsuario = new NuevoUsuario(biblioteca);
         ventanaUsuario.setSize(400, 300);
@@ -56,5 +59,6 @@ public class ManejoVentanas {
             System.exit(0);
         }
     }
+
 }
 

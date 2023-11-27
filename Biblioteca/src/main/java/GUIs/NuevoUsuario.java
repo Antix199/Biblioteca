@@ -27,6 +27,8 @@ public class NuevoUsuario extends JFrame {
 
                 Usuario usuario = new Usuario(idUsuario, nombre, correo);
                 biblioteca.registrarUsuario(usuario);
+
+                dispose();
             }
         });
     }
