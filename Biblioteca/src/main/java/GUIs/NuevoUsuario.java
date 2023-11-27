@@ -21,15 +21,20 @@ public class NuevoUsuario extends JFrame {
         RegistrarUsuario.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int idUsuario = Integer.parseInt(textIdUsuario.getText());
+                String idUsuarioTexto = textIdUsuario.getText();
                 String nombre = textNombre.getText();
                 String correo = textCorreo.getText();
 
-                Usuario usuario = new Usuario(idUsuario, nombre, correo);
-                biblioteca.registrarUsuario(usuario);
-
-                dispose();
+                if (ManejoVentanas.esNumero(idUsuarioTexto) && ManejoVentanas.esTextoNoVacio(nombre) && ManejoVentanas.esTextoNoVacio(correo)) {
+                    int idUsuario = Integer.parseInt(idUsuarioTexto);
+                    Usuario usuario = new Usuario(idUsuario, nombre, correo);
+                    biblioteca.registrarUsuario(usuario);
+                    dispose();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Por favor, revise el formato de los datos ingrsados.");
+                }
             }
+
         });
     }
 }

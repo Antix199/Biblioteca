@@ -20,18 +20,21 @@ public class RegistrarPrestamo extends JFrame {
         Prestar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (validarEntrada()){
+                    int idMaterial = Integer.parseInt(textIDMaterial.getText());
+                    int idUsuario = Integer.parseInt(textIDUsuario.getText());
 
-                int idMaterial = Integer.parseInt(textIDMaterial.getText());
-                int idUsuario = Integer.parseInt(textIDUsuario.getText());
+                    if (biblioteca.existeMaterialConID(idMaterial) && biblioteca.existeUsuarioConID(idUsuario)) {
+                        biblioteca.registrarPrestamo(idMaterial, idUsuario);
 
-                if (biblioteca.existeMaterialConID(idMaterial) && biblioteca.existeUsuarioConID(idUsuario)) {
-                    biblioteca.registrarPrestamo(idMaterial, idUsuario);
-
-                } else {
-                    JOptionPane.showMessageDialog(null, "Material o usuario no encontrado.");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Material o usuario no encontrado.");
+                    }
+                    dispose();
                 }
-                dispose();
+
             }
+
 
         });
         nuevoUsuario.addActionListener(new ActionListener() {
@@ -40,5 +43,15 @@ public class RegistrarPrestamo extends JFrame {
                 ManejoVentanas.abrirVentanaUsuario(biblioteca);
             }
         });
+
     }
+    private boolean validarEntrada() {
+        if (!ManejoVentanas.esNumero(textIDMaterial.getText()) || !ManejoVentanas.esNumero(textIDUsuario.getText())) {
+            JOptionPane.showMessageDialog(null, "Por favor, revise el formato de los datos ingresados.");
+            return false;
+        }
+        return true;
+    }
+
+
 }

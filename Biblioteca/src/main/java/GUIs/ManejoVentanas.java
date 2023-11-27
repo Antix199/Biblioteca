@@ -1,10 +1,7 @@
 package GUIs;
 import Modelo.Biblioteca;
-import Modelo.MaterialBiblioteca;
-
 import javax.swing.*;
-import java.util.List;
-import java.util.concurrent.ConcurrentLinkedDeque;
+
 
 public class ManejoVentanas {
 
@@ -59,6 +56,19 @@ public class ManejoVentanas {
             System.exit(0);
         }
     }
+    public static boolean esNumero(String texto) {
+        try {
+            Integer.parseInt(texto);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    public static boolean esTextoNoVacio(String texto) {
+        return texto != null && !texto.trim().isEmpty();
+    }
+
 
 }
 
