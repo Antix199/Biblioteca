@@ -1,5 +1,8 @@
 package GUIs;
+import Modelo.Biblioteca;
+
 import javax.swing.*;
+import java.util.concurrent.ConcurrentLinkedDeque;
 
 public class ManejoVentanas {
 
@@ -11,29 +14,30 @@ public class ManejoVentanas {
         menuPrincipal.setVisible(true);
     }
 
-    public static void abrirVentanaAgregar() {
-        AgregarMaterial ventanaAgregar = new AgregarMaterial();
+    public static void abrirVentanaAgregar(Biblioteca biblioteca) {
+
+        AgregarMaterial ventanaAgregar = new AgregarMaterial(biblioteca);
         ventanaAgregar.setSize(400, 300);
         ventanaAgregar.setLocationRelativeTo(null);
         ventanaAgregar.setVisible(true);
     }
 
-    public static void abrirVentanaBuscar() {
-        BuscarMaterial ventanaBuscar = new BuscarMaterial();
+    public static void abrirVentanaBuscar(Biblioteca biblioteca) {
+        BuscarMaterial ventanaBuscar = new BuscarMaterial(biblioteca);
         ventanaBuscar.setSize(400, 300);
         ventanaBuscar.setLocationRelativeTo(null);
         ventanaBuscar.setVisible(true);
     }
 
-    public static void abrirVentanaPrestamo() {
-        RegistrarPrestamo ventanaPrestamo = new RegistrarPrestamo();
+    public static void abrirVentanaPrestamo(Biblioteca biblioteca) {
+        RegistrarPrestamo ventanaPrestamo = new RegistrarPrestamo(biblioteca);
         ventanaPrestamo.setSize(400, 300);
         ventanaPrestamo.setLocationRelativeTo(null);
         ventanaPrestamo.setVisible(true);
     }
 
-    public static void abrirVentanaDevolucion() {
-        RegistrarDevolucion ventanaDevolucion = new RegistrarDevolucion();
+    public static void abrirVentanaDevolucion(Biblioteca biblioteca) {
+        RegistrarDevolucion ventanaDevolucion = new RegistrarDevolucion(biblioteca);
         ventanaDevolucion.setSize(400, 300);
         ventanaDevolucion.setLocationRelativeTo(null);
         ventanaDevolucion.setVisible(true);

@@ -7,6 +7,8 @@ public class MaterialBiblioteca {
 	protected String titulo;
 	protected String autor;
 
+	protected String estadotxt;
+
 	public int getId() {
 		return id;
 	}
@@ -27,12 +29,21 @@ public class MaterialBiblioteca {
 		return autor;
 	}
 
-	public void mostrarInformacion(){};
+	public String getEstadotxt() {
+		if (!estado){
+			return "disponible";
+		}
+		else {
+			return "prestado";
+		}
+	}
+
 	public MaterialBiblioteca(int id, String titulo, String autor) {
 		this.id = id;
 		this.titulo = titulo;
 		this.autor = autor;
 		this.estado = false;
+		this.estadotxt = getEstadotxt();
 	}
 
 

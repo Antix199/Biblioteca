@@ -23,6 +23,9 @@ public class Libro extends MaterialBiblioteca implements Prestable {
 	public void mostrarInformacion() {
 		System.out.println("ID:" + getId() + "Libro: " + getTitulo() + " - Autor: " + getAutor() + " - ISBN: " + ISBN + "Edición: " + edicion);
 	}
+	public String toString() {
+		return "Libro - ID: " + getId() + ", Título: " + getTitulo() + ", Autor: " + getAutor() + ", ISBN: " + getISBN() + ", Edición: " + getEdicion() + ", Estado: " + getEstadotxt() ;
+	}
 
 	@Override
 	public void prestar() {

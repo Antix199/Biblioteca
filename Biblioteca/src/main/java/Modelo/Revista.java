@@ -23,6 +23,9 @@ public class Revista extends MaterialBiblioteca implements Prestable {
 		System.out.println("ID:" + getId() + "Revista: " + getTitulo() + " - Autor: " + getAutor() + " - ISSN: " + ISSN + "Número: " + numero);
 	}
 
+	public String toString() {
+		return "Revista - ID: " + getId() + ", Título: " + getTitulo() + ", Autor: " + getAutor() + ", ISSN: " + getISSN() + ", Número: " + getNumero() + ", Estado: " + getEstadotxt();
+	}
 
 	@Override
 	public void prestar() {

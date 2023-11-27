@@ -1,8 +1,11 @@
 package GUIs;
 
+import Modelo.Biblioteca;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import Modelo.Biblioteca;
 
 public class RegistrarPrestamo extends JFrame {
     private JTextField textField1;
@@ -12,7 +15,7 @@ public class RegistrarPrestamo extends JFrame {
     private JButton Prestar;
     private JPanel PanelPrestamo;
 
-    public RegistrarPrestamo() {
+    public RegistrarPrestamo(Biblioteca biblioteca) {
 
         super("Menu préstamo");
         setContentPane(PanelPrestamo);

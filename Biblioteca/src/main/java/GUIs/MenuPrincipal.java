@@ -1,4 +1,6 @@
 package GUIs;
+import Modelo.Biblioteca;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,29 +17,29 @@ public class MenuPrincipal extends JFrame {
 
         super("Menu principal");
         setContentPane(PanelMenu);
-
+        Biblioteca biblioteca = new Biblioteca();
         menuAgregar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ManejoVentanas.abrirVentanaAgregar();
+                ManejoVentanas.abrirVentanaAgregar(biblioteca);
             }
         });
         menuBuscar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ManejoVentanas.abrirVentanaBuscar();
+                ManejoVentanas.abrirVentanaBuscar(biblioteca);
             }
         });
         menuRP.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ManejoVentanas.abrirVentanaPrestamo();
+                ManejoVentanas.abrirVentanaPrestamo(biblioteca);
             }
         });
         menuRD.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ManejoVentanas.abrirVentanaDevolucion();
+                ManejoVentanas.abrirVentanaDevolucion(biblioteca);
             }
         });
         finalizarPrograma.addActionListener(new ActionListener() {

@@ -1,8 +1,11 @@
 package GUIs;
 
+import Modelo.Biblioteca;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import Modelo.Biblioteca;
 
 public class RegistrarDevolucion extends JFrame{
     private JTextField textField1;
@@ -10,7 +13,7 @@ public class RegistrarDevolucion extends JFrame{
     private JButton devolver;
     private JPanel PanelDevolucion;
 
-    public RegistrarDevolucion() {
+    public RegistrarDevolucion(Biblioteca biblioteca) {
 
         super("Menu devolución");
         setContentPane(PanelDevolucion);
