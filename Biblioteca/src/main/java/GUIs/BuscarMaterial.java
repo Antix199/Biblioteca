@@ -10,25 +10,50 @@ import java.util.List;
 
 
 public class BuscarMaterial extends JFrame{
-    private JTextField titulo;
+    private JTextField textoBuscar;
     private JTextField autor;
     private JTextField codigo;
-    private JButton buscar;
+    private JButton buscarTitulo;
     private JPanel PanelBuscar;
     private JTextArea resultadosTextArea;
+    private JButton buscarCodigo;
+    private JButton buscarAutor;
+
     public BuscarMaterial(Biblioteca biblioteca) {
 
         super("Menubuscar material");
         setContentPane(PanelBuscar);
 
-        buscar.addActionListener(new ActionListener() {
+        buscarTitulo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String titulo = BuscarMaterial.this.titulo.getText();
-                String autor = BuscarMaterial.this.autor.getText();
-                String codigo = BuscarMaterial.this.codigo.getText();
+                String titulo = BuscarMaterial.this.textoBuscar.getText();
 
-                List<MaterialBiblioteca> resultados = biblioteca.buscarMaterial(titulo, autor, codigo);
+                List<MaterialBiblioteca> resultados = biblioteca.buscarPorTitulo(titulo);
+
+                for (MaterialBiblioteca material : resultados) {
+                    resultadosTextArea.append(material.toString() + "\n");
+                }
+            }
+        });
+        buscarAutor.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String autor = BuscarMaterial.this.textoBuscar.getText();
+
+                List<MaterialBiblioteca> resultados = biblioteca.buscarPorAutor(autor);
+
+                for (MaterialBiblioteca material : resultados) {
+                    resultadosTextArea.append(material.toString() + "\n");
+                }
+            }
+        });
+        buscarCodigo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String codigo = BuscarMaterial.this.textoBuscar.getText();
+
+                List<MaterialBiblioteca> resultados = biblioteca.buscarPorCodigo(codigo);
 
                 for (MaterialBiblioteca material : resultados) {
                     resultadosTextArea.append(material.toString() + "\n");

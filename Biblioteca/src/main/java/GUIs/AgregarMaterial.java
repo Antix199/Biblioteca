@@ -42,7 +42,7 @@ public class AgregarMaterial extends JFrame{
                     biblioteca.agregarMaterial(revista);
                     revista.mostrarInformacion();
                 }
-                JOptionPane.showMessageDialog(null, "Material registrado con éxito.");
+
                 dispose();
             }
         });

@@ -30,7 +30,7 @@ public class MaterialBiblioteca {
 	}
 
 	public String getEstadotxt() {
-		if (!estado){
+		if (!estado ){
 			return "disponible";
 		}
 		else {

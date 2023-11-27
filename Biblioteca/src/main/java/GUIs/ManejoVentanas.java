@@ -24,7 +24,7 @@ public class ManejoVentanas {
 
     public static void abrirVentanaBuscar(Biblioteca biblioteca) {
         BuscarMaterial ventanaBuscar = new BuscarMaterial(biblioteca);
-        ventanaBuscar.setSize(400, 300);
+        ventanaBuscar.setSize(600, 300);
         ventanaBuscar.setLocationRelativeTo(null);
         ventanaBuscar.setVisible(true);
     }

@@ -1,5 +1,6 @@
 package Modelo;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,18 +23,60 @@ public class Biblioteca {
 
 
     public void agregarMaterial(MaterialBiblioteca material) {
-        coleccion.add(material);
-        System.out.println("Material agregado a la colección: " + material.getTitulo());
+        if (!existeMaterialConID(material.getId())) {
+            coleccion.add(material);
+            JOptionPane.showMessageDialog(null, "Material registrado con éxito.");
+
+        } else {
+            System.out.println("Ya existe un material con el mismo ID.");
+            JOptionPane.showMessageDialog(null, "Error, Ya existe un material con el mismo ID.");
+
+        }
     }
-    public List<MaterialBiblioteca> buscarMaterial(String titulo, String autor, String codigo) {
+
+    private boolean existeMaterialConID(int id) {
+        for (MaterialBiblioteca material : coleccion) {
+            if (material.getId() == id) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public List<MaterialBiblioteca> buscarPorTitulo(String titulo) {
         List<MaterialBiblioteca> resultados = new ArrayList<>();
 
         for (MaterialBiblioteca material : coleccion) {
             boolean coincideTitulo = titulo == null || material.getTitulo().equalsIgnoreCase(titulo);
+
+            if (coincideTitulo) {
+                resultados.add(material);
+            }
+        }
+
+        return resultados;
+    }
+
+    public List<MaterialBiblioteca> buscarPorAutor(String autor) {
+        List<MaterialBiblioteca> resultados = new ArrayList<>();
+
+        for (MaterialBiblioteca material : coleccion) {
             boolean coincideAutor = autor == null || material.getAutor().equalsIgnoreCase(autor);
+
+            if (coincideAutor) {
+                resultados.add(material);
+            }
+        }
+
+        return resultados;
+    }
+
+    public List<MaterialBiblioteca> buscarPorCodigo(String codigo) {
+        List<MaterialBiblioteca> resultados = new ArrayList<>();
+
+        for (MaterialBiblioteca material : coleccion) {
             boolean coincideCodigo = codigo == null || cumpleCriterioCodigo(material, codigo);
 
-            if (coincideTitulo && coincideAutor && coincideCodigo) {
+            if (coincideCodigo) {
                 resultados.add(material);
             }
         }
@@ -51,6 +94,7 @@ public class Biblioteca {
         }
         return false;
     }
+
 }
 
 
