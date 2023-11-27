@@ -34,6 +34,17 @@ public class Biblioteca {
         }
     }
 
+    public void registrarUsuario(Usuario usuario) {
+        if (!existeUsuarioConID(usuario.getId())) {
+            usuarios.add(usuario);
+            JOptionPane.showMessageDialog(null, "Usuario registrado con éxito.");
+
+        } else {
+            System.out.println("Ya existe un material con el mismo ID.");
+            JOptionPane.showMessageDialog(null, "Error, Ya existe un usuario registrado con el mismo ID.");
+
+        }
+    }
     public boolean existeMaterialConID(int id) {
         for (MaterialBiblioteca material : coleccion) {
             if (material.getId() == id) {
@@ -129,7 +140,6 @@ public class Biblioteca {
             if (!material.isPrestado() && material instanceof Prestable) {
                 Prestable prestableMaterial = (Prestable) material;
                 prestableMaterial.prestar();
-
                 usuario.registrarPrestamo(material);
                 JOptionPane.showMessageDialog(null, "Préstamo registrado con éxito.");
             } else {

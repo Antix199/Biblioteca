@@ -36,7 +36,7 @@ public class RegistrarPrestamo extends JFrame {
         nuevoUsuario.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ManejoVentanas.abrirVentanaUsuario();
+                ManejoVentanas.abrirVentanaUsuario(biblioteca);
             }
         });
     }

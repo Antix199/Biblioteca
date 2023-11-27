@@ -42,8 +42,8 @@ public class ManejoVentanas {
         ventanaDevolucion.setLocationRelativeTo(null);
         ventanaDevolucion.setVisible(true);
     }
-    public static void abrirVentanaUsuario() {
-        NuevoUsuario ventanaUsuario = new NuevoUsuario();
+    public static void abrirVentanaUsuario(Biblioteca biblioteca) {
+        NuevoUsuario ventanaUsuario = new NuevoUsuario(biblioteca);
         ventanaUsuario.setSize(400, 300);
         ventanaUsuario.setLocationRelativeTo(null);
         ventanaUsuario.setVisible(true);

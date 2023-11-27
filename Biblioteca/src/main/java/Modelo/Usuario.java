@@ -8,13 +8,13 @@ public class Usuario {
 	private int idUsuario;
 	private String nombre;
 	private String email;
-	private List<MaterialBiblioteca> prestamos;
+	private Boolean prestamo;
 	public String getNombre() {
 		return nombre;
 	}
 
-	public String getEmail() {
-		return email;
+	public int getId() {
+		return idUsuario;
 	}
 	public int getIdUsuario() {
 		return idUsuario;
@@ -23,11 +23,11 @@ public class Usuario {
 		this.idUsuario = idUsuario;
 		this.nombre = nombre;
 		this.email = email;
-		this.prestamos = new ArrayList<>();
+		this.prestamo = false;
 
 	}
-	public void registrarPrestamo(MaterialBiblioteca material) {
-		prestamos.add(material);
-	}
+
+	public void registrarPrestamo(MaterialBiblioteca material){}
+
 
 }
