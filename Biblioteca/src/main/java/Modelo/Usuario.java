@@ -1,14 +1,14 @@
 package Modelo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Usuario {
 
-	private String idUsuario;
+	private int idUsuario;
 	private String nombre;
 	private String email;
-	public String getIdUsuario() {
-		return idUsuario;
-	}
-
+	private List<MaterialBiblioteca> prestamos;
 	public String getNombre() {
 		return nombre;
 	}
@@ -16,10 +16,18 @@ public class Usuario {
 	public String getEmail() {
 		return email;
 	}
-	public Usuario(String idUsuario, String nombre, String email) {
+	public int getIdUsuario() {
+		return idUsuario;
+		}
+	public Usuario(int idUsuario, String nombre, String email) {
 		this.idUsuario = idUsuario;
 		this.nombre = nombre;
 		this.email = email;
+		this.prestamos = new ArrayList<>();
+
+	}
+	public void registrarPrestamo(MaterialBiblioteca material) {
+		prestamos.add(material);
 	}
 
 }

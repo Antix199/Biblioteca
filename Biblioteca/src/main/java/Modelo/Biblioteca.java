@@ -34,7 +34,7 @@ public class Biblioteca {
         }
     }
 
-    private boolean existeMaterialConID(int id) {
+    public boolean existeMaterialConID(int id) {
         for (MaterialBiblioteca material : coleccion) {
             if (material.getId() == id) {
                 return true;
@@ -83,6 +83,14 @@ public class Biblioteca {
 
         return resultados;
     }
+    private MaterialBiblioteca buscarPorID(int idMaterial) {
+        for (MaterialBiblioteca material : coleccion) {
+            if (material.getId() == idMaterial) {
+                return material;
+            }
+        }
+        return null;
+    }
 
     private boolean cumpleCriterioCodigo(MaterialBiblioteca material, String codigo) {
         if (material instanceof Libro) {
@@ -95,6 +103,42 @@ public class Biblioteca {
         return false;
     }
 
+    public boolean existeUsuarioConID(int idUsuario) {
+        for (Usuario usuario : usuarios) {
+            if (usuario.getIdUsuario() == idUsuario) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private Usuario buscarUsuarioPorID(int idUsuario) {
+        for (Usuario usuario : usuarios) {
+            if (usuario.getIdUsuario() == idUsuario) {
+                return usuario;
+            }
+        }
+        return null;
+    }
+
+    public void registrarPrestamo(int idMaterial, int idUsuario) {
+        MaterialBiblioteca material = buscarPorID(idMaterial);
+        Usuario usuario = buscarUsuarioPorID(idUsuario);
+
+        if (material != null && usuario != null) {
+            if (!material.isPrestado() && material instanceof Prestable) {
+                Prestable prestableMaterial = (Prestable) material;
+                prestableMaterial.prestar();
+
+                usuario.registrarPrestamo(material);
+                JOptionPane.showMessageDialog(null, "Préstamo registrado con éxito.");
+            } else {
+                JOptionPane.showMessageDialog(null, "El material ya está prestado o no es prestable.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Material o usuario no encontrado.");
+        }
+    }
 }
 
 

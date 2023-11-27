@@ -42,6 +42,12 @@ public class ManejoVentanas {
         ventanaDevolucion.setLocationRelativeTo(null);
         ventanaDevolucion.setVisible(true);
     }
+    public static void abrirVentanaUsuario() {
+        NuevoUsuario ventanaUsuario = new NuevoUsuario();
+        ventanaUsuario.setSize(400, 300);
+        ventanaUsuario.setLocationRelativeTo(null);
+        ventanaUsuario.setVisible(true);
+    }
 
     public static void finalizarPrograma() {
         int opcion = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que quieres salir?", "Confirmar salida", JOptionPane.YES_NO_OPTION);

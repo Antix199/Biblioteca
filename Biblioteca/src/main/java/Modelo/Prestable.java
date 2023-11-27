@@ -2,7 +2,7 @@ package Modelo;
 
 public interface Prestable {
 
-    void prestar();
+    void  prestar();
     void devolver();
 
 }
